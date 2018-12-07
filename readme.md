@@ -11,7 +11,7 @@ This repository is a compilation of source code used in various tutorials create
 
 
 
-Date | Game | Description |
+| Date | Game | Description |
 | ----- | ----- | ------ |
 | 07/18 | [__Cannon Game__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/CannonExample/) | A simple game where you __fire a projectile from point A to point B__ using a pool of bullet objects.
 
