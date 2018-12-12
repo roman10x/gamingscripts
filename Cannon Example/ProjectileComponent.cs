@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ProjectileComponent : MonoBehaviour
 {
+    ProjectileSystem m_projectileSystem;
     bool m_isActive = false;
+
     Vector3 m_direction = Vector3.zero;
     float m_speed = 0;
 
-
-    ProjectileSystem m_projectileSystem;
 
     private void Start()
     {
@@ -35,6 +33,14 @@ public class ProjectileComponent : MonoBehaviour
         StartCoroutine(DisableObjectDelayed(5));
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Delay 0.1 to allow the physics collision to happen
+        StopAllCoroutines(); // Stop the 5 second trigger started earlier
+        StartCoroutine(DisableObjectDelayed(0.1f));
+    }
+
+
     private IEnumerator DisableObjectDelayed(float _delay)
     {
         yield return new WaitForSeconds(_delay);
@@ -42,10 +48,6 @@ public class ProjectileComponent : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        StartCoroutine(DisableObjectDelayed(0.1f));
-    }
     private void OnDestroy()
     {
         if (m_projectileSystem != null) { m_projectileSystem.UnregisterProjectile(this); }

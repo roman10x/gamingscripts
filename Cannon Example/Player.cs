@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(WeaponComponent))]
 public class Player : MonoBehaviour
@@ -15,6 +12,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //Hack for tutorial; Call FireWeapon from your own scripts!
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

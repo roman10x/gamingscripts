@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponComponent : MonoBehaviour
 {
     ProjectileSystem m_projectileSystem;
-    public float m_projectileSpeed;
+    [SerializeField]
+    float m_projectileSpeed;
 
     private void Start()
     {
