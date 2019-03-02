@@ -1,62 +1,68 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 
-namespace EngiGamesTools
+public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
+
+    #region Fields
+
     /// <summary>
-    /// Singleton class for Unity Controllers
+    /// The instance.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour 
+    private static T instance;
+
+    private static bool m_applicationIsQuitting = false;
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// Gets the instance.
+    /// </summary>
+    /// <value>The instance.</value>
+    public static T GetInstance()
     {
-        static T ms_instance;
+        if (m_applicationIsQuitting) { return null; }
 
-        private static bool m_applicationIsQuitting = false;
-
-        /// <summary>
-        /// returns singleton instance
-        /// </summary>
-        /// <returns></returns>
-        public static T GetInstance()
+        if (instance == null)
         {
-            if (m_applicationIsQuitting) { return null; }
-            if (ms_instance == null)
+            instance = FindObjectOfType<T>();
+            if (instance == null)
             {
-                GameObject singleton = new GameObject();
-                ms_instance = singleton.AddComponent<T>();
-                singleton.name = "[singleton] " + typeof(T).ToString();
+                GameObject obj = new GameObject();
+                obj.name = typeof(T).Name;
+                instance = obj.AddComponent<T>();
             }
-            return ms_instance;
         }
+        return instance;
+    }
 
-        /// <summary>
-        /// Protected constructor for base class
-        /// </summary>
-        protected Singleton()
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
+    protected virtual void Awake()
+    {
+        if (instance == null)
         {
+            instance = this as T;
+            DontDestroyOnLoad(gameObject);
         }
-
-        private void Awake()
+        else
         {
-            if (ms_instance != null && ms_instance != gameObject)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                ms_instance = (T)(object)this;
-                DontDestroyOnLoad(gameObject);
-            }
-            Initialize();
-        }
-        /// <summary>
-        /// Initialization override
-        /// </summary>
-        public virtual void Initialize() { }
-
-        private void OnApplicationQuit()
-        {
-            m_applicationIsQuitting = true;
+            Destroy(gameObject);
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        m_applicationIsQuitting = true;
+    }
+    #endregion
+
 }
