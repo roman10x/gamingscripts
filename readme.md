@@ -12,8 +12,9 @@ This repository is a compilation of source code used in various tutorials create
 
 | Date | Game | Tutorial | Description |
 | ----- | ----- | ------ | ----------- |
-| 07/18 | [__Cannon Game__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/Cannon%20Example/) | [YouTube](https://www.youtube.com/watch?v=KGkQLHZC4bI) | A simple game where you __fire a projectile from point A to point B__ using a pool of bullet objects.
-| 07/18 | [__Stickman Hook__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/Stickman%20Example/) | [YouTube](https://youtu.be/1DF_Qm-Feyk) | A game where you __hook to anchors to swing around levels__ and __bounce off platforms__ to reach the end.
+| 12/18 | [__Cannon Game__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/FireBalls3D%20Example/) | [YouTube](https://www.youtube.com/watch?v=KGkQLHZC4bI) | A simple game where you fire a projectile from point A to point B using a pool of bullet objects.
+| 03/19 | [__Stickman Hook__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/Stickman%20Example/) | [YouTube](https://www.youtube.com/watch?v=1DF_Qm-Feyk) | A game where you hook to anchors to swing around levels and bounce off platforms to reach the end.
+| 06/19 | [__Archero__](https://bitbucket.org/EngiGamesBitbucket/howtomakethatgame/src/master/Archero%20Example/) | [YouTube](https://www.youtube.com/watch?v=3TNg_ic8RRk) | A game where you either moving, or shooting at hordes of enemies - Perfect for a state machine!
 
 
 
