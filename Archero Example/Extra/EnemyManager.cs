@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    List<EnemyComponent> m_enemyList = new List<EnemyComponent>();
+    public List<EnemyComponent> m_enemyList = new List<EnemyComponent>();
 
     public void RegisterEnemy(EnemyComponent _enemy) { m_enemyList.Add(_enemy); }
     public void UnregisterEnemy(EnemyComponent _enemy) { m_enemyList.Remove(_enemy); }
