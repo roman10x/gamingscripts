@@ -10,9 +10,12 @@ public class MoveState : StateMachineBehaviour
 
     WidgetController m_widgetController;
 
-    private void Awake()
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        m_widgetController = WidgetController.GetInstance();
+        if (m_widgetController == null)
+        {
+            m_widgetController = WidgetController.GetInstance();
+        }
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

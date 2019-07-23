@@ -10,14 +10,18 @@ public class FireState : StateMachineBehaviour
     EnemyManager m_enemyManager;
     WeaponComponent m_weaponComponent;
 
-    private void Awake()
-    {
-        m_widgetController = WidgetController.GetInstance();
-        m_enemyManager = EnemyManager.GetInstance();
-    }
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (m_widgetController == null)
+        {
+            m_widgetController = WidgetController.GetInstance();
+        }
+
+        if (m_enemyManager == null)
+        {
+            m_enemyManager = EnemyManager.GetInstance();
+        }
+
         if (m_weaponComponent == null) { m_weaponComponent = animator.GetComponent<WeaponComponent>(); }
         m_canFire = true;
     }

@@ -12,14 +12,19 @@ public class IdleState : StateMachineBehaviour
     WidgetController m_widgetController;
     EnemyManager m_enemyManager;
 
-    private void Awake()
-    {
-        m_widgetController = WidgetController.GetInstance();
-        m_enemyManager = EnemyManager.GetInstance();
-    }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (m_widgetController == null)
+        {
+            m_widgetController = WidgetController.GetInstance();
+        }
+
+        if (m_enemyManager == null)
+        {
+            m_enemyManager = EnemyManager.GetInstance();
+        }
+
         animator.ResetTrigger(MOVE_STATE);
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
