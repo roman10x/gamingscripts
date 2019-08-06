@@ -84,7 +84,7 @@ public class LinqExamples : MonoBehaviour
 }
 
 
-//Person class with constructor for each parameter
+//Person class with constructor for each member
 public class Person
 {
     public Person(bool _isAlive, string _firstName, string _lastName)
