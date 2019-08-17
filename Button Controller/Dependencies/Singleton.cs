@@ -1,27 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
-
-    #region Fields
-
-    /// <summary>
-    /// The instance.
-    /// </summary>
     private static T instance;
 
     private static bool m_applicationIsQuitting = false;
-    #endregion
 
-    #region Properties
-
-    /// <summary>
-    /// Gets the instance.
-    /// </summary>
-    /// <value>The instance.</value>
     public static T GetInstance()
     {
         if (m_applicationIsQuitting) { return null; }
@@ -39,13 +23,14 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         return instance;
     }
 
-    #endregion
+    /* IMPORTANT!!! To use Awake in a derived class you need to do it this way
+     * protected override void Awake()
+     * {
+     *     base.Awake();
+     *     //Your code goes here
+     * }
+     * */
 
-    #region Methods
-
-    /// <summary>
-    /// Use this for initialization.
-    /// </summary>
     protected virtual void Awake()
     {
         if (instance == null)
@@ -53,16 +38,15 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             instance = this as T;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (instance != this as T)
         {
             Destroy(gameObject);
         }
+        else { DontDestroyOnLoad(gameObject); }
     }
 
     private void OnApplicationQuit()
     {
         m_applicationIsQuitting = true;
     }
-    #endregion
-
 }
