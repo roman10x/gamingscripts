@@ -17,6 +17,7 @@ public class CanvasManager : Singleton<CanvasManager>
 
     protected override void Awake()
     {
+        base.Awake();
         canvasControllerList = GetComponentsInChildren<CanvasController>().ToList();
         canvasControllerList.ForEach(x => x.gameObject.SetActive(false));
         SwitchCanvas(CanvasType.MainMenu);
